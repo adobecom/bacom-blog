@@ -5,11 +5,12 @@ const addAria = (el, button) => {
   currentLink?.setAttribute('aria-current', true);
 
   const menu = el.querySelector('ul');
-  menu.id = LANGUAGE_MENU;
-  button.setAttribute('aria-controls', LANGUAGE_MENU);
+  menu?.setAttribute('id', LANGUAGE_MENU);
+  button?.setAttribute('aria-controls', LANGUAGE_MENU);
 };
 
 const closeMenu = (button) => {
+  if (!button) return;
   button.classList.remove('inline-dialog-active');
   button.setAttribute('aria-expanded', false);
   button.focus();
