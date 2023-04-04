@@ -1,15 +1,31 @@
 version: 1
-auto-generated: true
+
 indices:
   default:
     include:
-      - /**
-    target: /query-index.json
+      - '/**'
+    exclude:
+      - '/gnav*'
+      - '/footer*'
+      - '/authors/**'
+      - '/banners/**'
+      - '/categories/**'
+      - '/docs/**'
+      - '/drafts/**'
+      - '/footer-banners/**'
+      - '/fragments/**'
+      - '/seo/**'
+      - '/tags/**'
+    target: /query-index.xlsx
     properties:
+      author:
+        select: head > meta[name="author"]
+        value: |
+          attribute(el, 'content')
       title:
         select: head > meta[property="og:title"]
         value: |
-          attribute(el, "content")
+          attribute(el, 'content')
       date:
         select: head > meta[name="publication-date"]
         value: |
@@ -17,36 +33,28 @@ indices:
       image:
         select: head > meta[property="og:image"]
         value: |
-          match(attribute(el, "content"), "https:\/\/[^/]+(/.*)")
+          match(attribute(el, 'content'), 'https:\/\/[^/]+(\/.*)')
       imageAlt:
         select: head > meta[property="og:image:alt"]
         value: |
-          attribute(el, "content")
-      category:
-        select: head > meta[name="category"]
-        value: |
-          attribute(el, "content")
-      tags:
-        select: head > meta[property="article:tag"]
-        values: |
-          attribute(el, "content")
-      topics:
-        select: head > meta[name="topics"]
-        values: |
-          attribute(el, "content")
+          attribute(el, 'content')
       description:
         select: head > meta[name="description"]
         value: |
-          attribute(el, "content")
-      author:
-        select: head > meta[name="author"]
+          attribute(el, 'content')
+      category:
+        select: head > meta[name="category"]
         value: |
-          attribute(el, "content")
-      lastModified:
-        select: none
-        value: |
-          parseTimestamp(headers["last-modified"], "ddd, DD MMM YYYY hh:mm:ss GMT")
+          attribute(el, 'content')
+      tags:
+        select: head > meta[property="article:tag"]
+        values: |
+          attribute(el, 'content')
       robots:
         select: head > meta[name="robots"]
         value: |
-          attribute(el, "content")
+          attribute(el, 'content')
+      lastModified:
+        select: none
+        value: |
+          parseTimestamp(headers['last-modified'], 'ddd, DD MMM YYYY hh:mm:ss GMT')
