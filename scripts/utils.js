@@ -93,11 +93,9 @@ function getImageCaption(picture) {
 
   // If the parent element doesn't have a caption, check if the next sibling does
   const parentSiblingEl = parentEl.nextElementSibling;
-  caption = parentSiblingEl
-    && !parentSiblingEl.querySelector('picture')
-    && parentSiblingEl.firstChild.tagName === 'EM'
-    ? parentSiblingEl.querySelector('em')
-    : undefined;
+  if (!parentSiblingEl || !parentSiblingEl.querySelector('picture')) return undefined;
+  const firstChildEl = parentSiblingEl.firstChild;
+  caption = firstChildEl?.tagName === 'EM' ? firstChildEl : undefined;
   return caption;
 }
 
@@ -120,9 +118,7 @@ async function buildArticleHeader(el) {
   const { codeRoot } = getConfig();
   const authorURL = getMetadata('author-url') || (author ? `${codeRoot}/authors/${author.replace(/[^0-9a-z]/gi, '-').toLowerCase()}` : null);
   const publicationDate = getMetadata('publication-date');
-
   const categoryTag = getLinkForTopic(category);
-
   const articleHeaderBlockEl = buildBlock('article-header', [
     [`<p>${categoryTag}</p>`],
     [h1],
