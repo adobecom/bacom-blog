@@ -112,8 +112,7 @@ async function buildArticleHeader(el) {
   const caption = getImageCaption(picture);
   const figure = document.createElement('div');
   figure.append(picture, caption);
-  const tag = getMetadata('article:tag');
-  const category = tag || 'News';
+  const category = getMetadata('category');
   const author = getMetadata('author') || 'Adobe Communications Team';
   const { locale } = getConfig();
   const authorURL = getMetadata('author-url') || (author ? `${locale.contentRoot}/authors/${author.replace(/[^0-9a-z]/gi, '-').toLowerCase()}` : null);
