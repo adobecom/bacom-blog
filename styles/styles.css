@@ -93,6 +93,10 @@ main p picture img {
     margin-right: auto;
 }
 
+.section .columns.columns-table {
+  max-width: var(--grid-container-width);
+}
+
 .article-header .article-feature-image {
   padding: 0;
   margin: auto;
@@ -110,6 +114,11 @@ main p picture img {
 .recommended-articles .article-card-date,
 .featured-article .featured-article-card-date {
   display: none;
+}
+
+.quote {
+  max-width: var(--grid-container-width);
+  margin: 0 auto;
 }
 
 @media screen and (min-width: 600px) {
@@ -132,5 +141,18 @@ main p picture img {
     margin-right: auto;
     padding-left: 0;
     padding-right: 0;
+  }
+
+  .quote {
+    max-width: var(--body-max-width);
+    margin: 0 auto;
+  }
+
+  .section .columns.columns-table {
+    max-width: var(--body-max-width);
+  }
+
+  .section .columns.contained {
+    max-width: var(--body-max-width);
   }
 }
