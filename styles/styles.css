@@ -156,3 +156,9 @@ main p picture img {
     max-width: var(--body-max-width);
   }
 }
+
+@media screen and (min-width: 1200px) {
+  .recommended-articles-small-content-wrapper .article-card .article-card-body {
+    padding: 1.25rem;
+  }  
+}
