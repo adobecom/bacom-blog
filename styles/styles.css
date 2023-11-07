@@ -163,6 +163,11 @@ main p picture img {
   .section .columns.contained {
     max-width: var(--body-max-width);
   }
+
+  .recommended-articles-small-content-wrapper .article-card .article-card-body h3 {
+    margin-bottom: 8px;
+  }  
+  
 }
 
 @media screen and (min-width: 1200px) {
