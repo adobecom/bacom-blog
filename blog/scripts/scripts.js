@@ -143,7 +143,7 @@ const miloLibs = setLibs(LIBS);
   const { loadArea, setConfig, loadLana } = await import(`${miloLibs}/utils/utils.js`);
 
   setConfig({ ...CONFIG, miloLibs });
-  loadLana({ clientId: 'bacom-blog' });
+  loadLana({ clientId: 'bacom-blog', tags: 'default' });
   await buildAutoBlocks();
   await loadArea();
 }());

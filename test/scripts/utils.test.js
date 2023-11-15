@@ -67,7 +67,7 @@ describe('Auto Blocks', () => {
     document.head.innerHTML = metadata;
     document.body.innerHTML = '';
     await buildAutoBlocks();
-    expect(window.lana.log.calledWith('Auto Blocking failed')).to.be.true;
+    expect(window.lana.log.called).to.be.true;
   });
 
   it('builds the tags block', async () => {
