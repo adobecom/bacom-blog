@@ -69,7 +69,7 @@ function getImageCaption(picture) {
 
   // If the parent element doesn't have a caption, check if the next sibling does
   const parentSiblingEl = parentEl.nextElementSibling;
-  if (!parentSiblingEl || !parentSiblingEl.querySelector('picture')) return;
+  if (!parentSiblingEl || !parentSiblingEl.querySelector('picture')) return '';
   const firstChildEl = parentSiblingEl.firstChild;
   if (firstChildEl?.tagName === 'EM') return firstChildEl;
 }
