@@ -220,11 +220,8 @@ const CONFIG = {
  * Edit below at your own risk
  * ------------------------------------------------------------
  */
-
-const miloLibs = LIBS;
-
 (function loadStyles() {
-  const paths = [`${miloLibs}/styles/styles.css`];
+  const paths = [`${LIBS}/styles/styles.css`];
   if (STYLES) { paths.push(STYLES); }
   paths.forEach((path) => {
     const link = document.createElement('link');
@@ -235,9 +232,9 @@ const miloLibs = LIBS;
 }());
 
 (async function loadPage() {
-  const { loadArea, setConfig, loadLana } = await import(`${miloLibs}/utils/utils.js`);
+  const { loadArea, setConfig, loadLana } = await import(`${LIBS}/utils/utils.js`);
 
-  setConfig({ ...CONFIG, miloLibs });
+  setConfig({ ...CONFIG, miloLibs: LIBS });
   loadLana({ clientId: 'bacom-blog', tags: 'default' });
   await buildAutoBlocks();
   await loadArea();
