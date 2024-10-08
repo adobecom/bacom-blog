@@ -27,7 +27,7 @@
   articleHeaderJs.setAttribute('href', `${libs}/blocks/article-header/article-header.js`);
 
   [miloStyles, miloUtils, articleHeaderJs].forEach((tag) => tag.setAttribute('rel', 'preload'));
-  document.head.append(miloStyles, miloUtils, articleHeaderJs);
+  document.head.append(miloStyles, miloUtils, articleHeaderStyles, articleHeaderJs);
 </script>
 <script src="/blog/scripts/scripts.js" type="module"></script>
 <style>body { display: none; }</style>
