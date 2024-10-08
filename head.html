@@ -10,27 +10,16 @@
   })();
 
   const miloStyles = document.createElement('link');
-  const articleHeaderStyles = document.createElement('link');
-  const articleHeaderJs = document.createElement('link');
   const miloUtils = document.createElement('link');
-  const iconsJs = document.createElement('link');
 
-  [miloStyles, articleHeaderStyles].forEach((tag) => tag.setAttribute('as', 'style'))
+  miloStyles.setAttribute('as', 'style');
   miloStyles.setAttribute('href', `${libs}/styles/styles.css`);
-  articleHeaderStyles.setAttribute('href', `${libs}/blocks/article-header/article-header.css`);
-
-  [miloUtils, articleHeaderJs, iconsJs].forEach((tag) => {
-    tag.setAttribute('crossorigin', 'true');
-    tag.setAttribute('as', 'script');
-  })
-
+  miloUtils.setAttribute('as', 'script');
+  miloUtils.setAttribute('crossorigin', 'true');
   miloUtils.setAttribute('href', `${libs}/utils/utils.js`);
-  articleHeaderJs.setAttribute('href', `${libs}/blocks/article-header/article-header.js`);
-  iconsJs.setAttribute('href', `${libs}/features/icons/icons.js`);
 
-  [miloStyles, miloUtils, articleHeaderStyles, articleHeaderJs, iconsJs].forEach((tag) => tag.setAttribute('rel', 'preload'));
-  articleHeaderStyles.setAttribute('rel', 'preload stylesheet');
-  document.head.append(miloStyles, miloUtils, articleHeaderStyles, articleHeaderJs, iconsJs);
+  [miloStyles, miloUtils].forEach((tag) => tag.setAttribute('rel', 'preload'));
+  document.head.append(miloStyles, miloUtils);
 </script>
 <script src="/blog/scripts/scripts.js" type="module"></script>
 <style>body { display: none; }</style>
