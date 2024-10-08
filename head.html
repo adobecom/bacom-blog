@@ -1,5 +1,34 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <script src="/blog/scripts/fallback.js" nomodule></script>
+<script>
+  const libs = (() => {
+    const { hostname, search } = window.location;
+    if (!['.hlx.', '.stage.', 'local'].some((i) => hostname.includes(i))) return '/libs';
+    const branch = new URLSearchParams(search).get('milolibs') || 'main';
+    if (branch === 'local') return 'http://localhost:6456/libs';
+    return branch.includes('--') ? `https://${branch}.hlx.live/libs` : `https://${branch}--milo--adobecom.hlx.live/libs`;
+  })();
+
+  const miloStyles = document.createElement('link');
+  const articleHeaderStyles = document.createElement('link');
+  const articleHeaderJs = document.createElement('link');
+  const miloUtils = document.createElement('link');
+
+  [miloStyles, articleHeaderStyles].forEach((tag) => tag.setAttribute('as', 'style'))
+  miloStyles.setAttribute('href', `${libs}/styles/styles.css`);
+  articleHeaderStyles.setAttribute('href', `${libs}/blocks/article-header/article-header.css`);
+
+  [miloUtils, articleHeaderJs].forEach((tag) => {
+    tag.setAttribute('crossorigin', 'true');
+    tag.setAttribute('as', 'script');
+  })
+
+  miloUtils.setAttribute('href', `${libs}/utils/utils.js`);
+  articleHeaderJs.setAttribute('href', `${libs}/blocks/article-header/article-header.js`);
+
+  [miloStyles, miloUtils, articleHeaderJs].forEach((tag) => tag.setAttribute('rel', 'preload'));
+  document.head.append(miloStyles, miloUtils, articleHeaderJs);
+</script>
 <script src="/blog/scripts/scripts.js" type="module"></script>
 <style>body { display: none; }</style>
 <link rel="icon" href="data:,">
