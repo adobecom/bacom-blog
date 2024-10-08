@@ -83,7 +83,7 @@ async function buildArticleHeader(el) {
   el.prepend(div);
 }
 
-async function buildAutoBlocks() {
+export async function buildAutoBlocks() {
   const { getMetadata } = await import(`${LIBS}/utils/utils.js`);
   const mainEl = document.querySelector('main');
   try {
