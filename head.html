@@ -13,22 +13,28 @@
   const articleHeaderStyles = document.createElement('link');
   const articleHeaderJs = document.createElement('link');
   const miloUtils = document.createElement('link');
+  const iconsJs = document.createElement('link');
+  const iconsSvg = document.createElement('link');
+
+  iconsSvg.setAttribute('href', `${libs}/img/icons/icons.svg`);
+  iconsSvg.setAttribute('crossorigin', `true`);
 
   [miloStyles, articleHeaderStyles].forEach((tag) => tag.setAttribute('as', 'style'))
   miloStyles.setAttribute('href', `${libs}/styles/styles.css`);
   articleHeaderStyles.setAttribute('href', `${libs}/blocks/article-header/article-header.css`);
 
-  [miloUtils, articleHeaderJs].forEach((tag) => {
+  [miloUtils, articleHeaderJs, iconsJs].forEach((tag) => {
     tag.setAttribute('crossorigin', 'true');
     tag.setAttribute('as', 'script');
   })
 
   miloUtils.setAttribute('href', `${libs}/utils/utils.js`);
   articleHeaderJs.setAttribute('href', `${libs}/blocks/article-header/article-header.js`);
+  iconsJs.setAttribute('href', `${libs}/features/icons/icons.js`)
 
-  [miloStyles, miloUtils, articleHeaderJs].forEach((tag) => tag.setAttribute('rel', 'preload'));
+  [miloStyles, miloUtils, articleHeaderStyles, articleHeaderJs, iconsJs, iconsSvg].forEach((tag) => tag.setAttribute('rel', 'preload'));
   articleHeaderStyles.setAttribute('rel', 'preload stylesheet');
-  document.head.append(miloStyles, miloUtils, articleHeaderStyles, articleHeaderJs);
+  document.head.append(miloStyles, miloUtils, articleHeaderStyles, articleHeaderJs, iconsJs, iconsSvg);
 </script>
 <script src="/blog/scripts/scripts.js" type="module"></script>
 <style>body { display: none; }</style>
