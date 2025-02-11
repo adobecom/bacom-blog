@@ -32,3 +32,8 @@ notifications:
         components: # Please do not change this.
           - name: "DevOps Security"
           
+rules:
+  - match:
+      - path: "package-lock.json"
+    visibility:
+      - NONE
