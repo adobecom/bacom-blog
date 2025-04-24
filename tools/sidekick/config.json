@@ -1,5 +1,6 @@
 {
   "project": "BACOM-BLOG",
+  "trustedHosts": ["milo.adobe.com"],
   "plugins": [
     {
       "id": "library",
